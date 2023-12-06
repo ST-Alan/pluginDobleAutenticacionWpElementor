@@ -21,15 +21,18 @@ class ValidarUsuario
         $nombre_campo = 'BajaCodSeguridad';
         // Verificar si el usuario ya existe
         $usuario_existente = get_user_by('email', $correo);
-    
-        if ($usuario_existente) {
 
+        if ($usuario_existente instanceof WP_User) {
             $this->insertarCodigoUsuario($usuario_existente->ID);
-            return ['ok'=> 1];
+            return ['ok' => 1];
+        // if ($usuario_existente) {
+
+        //     $this->insertarCodigoUsuario($usuario_existente->ID);
+        //     return ['ok'=> 1];
         } else {
             // El usuario no existe, crearlo
             $nuevo_usuario = wp_insert_user(array(
-                'user_login' => $nombre,
+                'user_login' => $correo,
                 'user_email' => $correo,
                 'user_pass'  => wp_generate_password(), // Puedes personalizar esto según tus necesidades
             ));
@@ -38,10 +41,19 @@ class ValidarUsuario
                 // Usuario creado con éxito, devolver su ID
                 $this->insertarCodigoUsuario($nuevo_usuario->ID);
                 return ['ok'=> 1];
-            } else {
-                // Hubo un error al crear el usuario, devolver el objeto WP_Error
-                return ['ok'=> 0];
+            } 
+            // else {
+            //     // Hubo un error al crear el usuario, devolver el objeto WP_Error
+            //     return ['ok'=> 0];
+            // }
+
+
+            if ( is_wp_error( $nuevo_usuario ) ) 
+            {    
+                return ['ok'=> 0,'error'=>$nuevo_usuario->get_error_message()];
+                // echo $nuevo_usuario->get_error_message();
             }
+
         }
     }
 
@@ -54,8 +66,11 @@ class ValidarUsuario
 
         $this->autenticar = new Autenticar();
         $this->password = $this->autenticar->crearDobleAutenticacionElementorPro();
+        var_dump($this->password);
             
-        $wpdb->query("UPDATE $tabla_usuarios SET $nombre_campo = $this->password WHERE ID=$idUsuario");
+        // $wpdb->query("UPDATE $tabla_usuarios SET $nombre_campo = $this->password WHERE ID=$idUsuario");
+        $wpdb->query($wpdb->prepare("UPDATE $tabla_usuarios SET $nombre_campo = %s WHERE ID = %d", $this->password, $idUsuario));
+
     }
 
     function enviarCorreoCodigoUsuario($idUsuario)

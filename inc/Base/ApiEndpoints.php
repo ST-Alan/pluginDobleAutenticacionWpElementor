@@ -28,11 +28,11 @@ class ApiEndpoints extends PluginController
     {
         $this->validarUsuario = new ValidarUsuario();
         $this->validarCodigoEnviado = new ValidarCodigoEnviado();
-        $nameSpace='bajaUsuario/v1';
         $this->apiRoutes=array
         (
             array
             (//Validacion si existe usuario                   
+                "nameSpace" => 'bajaUsuario/v1',
                 "route"=>'/validarUsuario',
                 "args" =>array
                     (
@@ -41,7 +41,8 @@ class ApiEndpoints extends PluginController
                     )
             ),
             array
-            (//Validacion si existe usuario                   
+            (//Validacion si existe usuario
+                "nameSpace" => 'bajaUsuario/v1',                   
                 "route"=>'/validarCodigoEnviado',
                 "args" =>array
                     (
@@ -55,9 +56,9 @@ class ApiEndpoints extends PluginController
 
     public function registerApiRoutes()
     {
-        foreach($apiRoutes as $route)
+        foreach($this->apiRoutes as $route)
         {
-               register_rest_route($nameSpace, $route["route"], $route["args"]);
+               register_rest_route($route["nameSpace"], $route["route"], $route["args"]);
         } 
     }
     
