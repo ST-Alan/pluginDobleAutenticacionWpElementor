@@ -4,8 +4,9 @@
  */
 namespace Aleximxp\Base;
 
-use ValidarUsuario;
-use ValidarCodigoEnviado;
+use Aleximxp\Base\ValidarUsuario;
+use Aleximxp\Base\ValidarCodigoEnviado;
+
 
 class ApiEndpoints extends PluginController
 {

@@ -25,6 +25,6 @@ class CampoDB
 
     public function registrar ()
     {
-        this.agregarCampoBajaCodSeguridad();
+        self::agregarCampoBajaCodSeguridad();
     }
 }

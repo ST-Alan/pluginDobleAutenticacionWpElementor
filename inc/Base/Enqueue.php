@@ -33,7 +33,7 @@ class Enqueue extends PluginController{
         $current_slug = add_query_arg( array(), $wp->request );
 		if($current_slug==$slugDeFormulario)
         {    
-            wp_enqueue_script( 'registroJS', $this->pluginUrl.'/assets/js/datosFormBajaUsuario.js', array(),false,true);
+            wp_enqueue_script( 'registroJS', $this->pluginUrl.'assets/js/datosFormBajaUsuario.js', array(),false,true);
         }
     }
     public function enqueueValidarCodigoEnBD($hook)
@@ -45,7 +45,7 @@ class Enqueue extends PluginController{
         $current_slug = add_query_arg( array(), $wp->request );
 		if($current_slug==$slugDeFormulario)
         {    
-            wp_enqueue_script( 'registroJS', $this->pluginUrl.'/assets/js/datosFormBajaUsuario.js', array(),false,true);
+            wp_enqueue_script( 'registroJS', $this->pluginUrl.'assets/js/datosFormBajaUsuario.js', array(),false,true);
         }
     }
 }
