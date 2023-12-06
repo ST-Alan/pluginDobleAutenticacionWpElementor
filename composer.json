@@ -1,0 +1,19 @@
+{
+    "name": "afermin/aleximxp",
+    "description": "Autenticar usuario antes de pedir su baja en el sistema",
+    "type": "project",
+    "license": "GPL",
+    "autoload": {
+        "psr-4": {
+            "Aleximxp\\": "./inc"
+        }
+    },
+    "authors": [
+        {
+            "name": "ST-Alan",
+            "email": "contacto@alanfermin.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {}
+}
