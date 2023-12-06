@@ -42,10 +42,12 @@ const sendWpApi = () =>{
             // const formularioDeBaja = document.getElementById('formBajaUsuario')
             
             
-            const clickBotonForm = (event) => {
+const clickBotonForm = (event) => 
+{
     camposDelFormulario();
     sendWpApi();
     event.preventDefault();
+    console.log('Alan was here')
 }
 let btnForm=document.querySelector('#btnFormBajaEnviar');
 btnForm.setAttribute('onclick', 'clickBotonFormulario(event)')

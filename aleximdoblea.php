@@ -8,7 +8,7 @@
 Plugin Name: AleximExpress Doble Autenticación
 Plugin URI: https://github.com/ST-Alan/pluginDobleAutenticacionWpElementor
 Description: Autenticar usuario antes de pedir su baja en el sistema
-Version: 1.0.6
+Version: 1.0.8
 Author: Alan Fermin | David Gálvez
 Author URI: https://alanfermin.com
 License: GPL3 or later
